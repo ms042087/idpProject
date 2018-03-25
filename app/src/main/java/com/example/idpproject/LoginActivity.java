@@ -1,6 +1,7 @@
 package com.example.idpproject;
 
 import android.app.AlertDialog;
+import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -12,12 +13,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity{
 
     EditText etUserName, etPassword;
     Button bLogin;

@@ -25,7 +25,7 @@ public class UserAreaActivity extends AppCompatActivity {
         bNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent Next = new Intent(UserAreaActivity.this,MainFunction.class);
+                Intent Next = new Intent(UserAreaActivity.this,MainPage.class);
                 startActivity(Next);
             }
         });
