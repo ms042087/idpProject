@@ -1,4 +1,3 @@
-//package com.learnadroid.myfirstapp;
 package com.example.idpproject;
 import android.annotation.SuppressLint;
 import android.os.StrictMode;
@@ -15,10 +14,16 @@ import java.sql.SQLException;
 
 public class ConnectionClass {
     String classs = "com.mysql.jdbc.Driver";
+
+    /**
+     * You can only change this
+     */
     String url = "jdbc:mysql://192.168.0.102/mydb";
     String user = "idpparkingadmin";
     String password = "idpparkingadmin";
-
+    /**
+     * You can only change this
+     */
 
 
     @SuppressLint("NewApi")

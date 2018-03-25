@@ -81,7 +81,7 @@ public class RegisterActivity extends AppCompatActivity {
                         Statement stmt = con.createStatement();
                         stmt.executeUpdate(query);
 
-                        z = "Register successful";
+                        z = "Welcome!! "+userName;
                         isSuccess=true;
 
                     }
@@ -102,7 +102,13 @@ public class RegisterActivity extends AppCompatActivity {
 
 
             if(isSuccess) {
-                startActivity(new Intent(RegisterActivity.this,UserAreaActivity.class));
+                Intent intent = new Intent(RegisterActivity.this,MainPage.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("userName", userName);
+                bundle.putString("licenseNumber", license);
+                intent.putExtras(bundle);
+                startActivity(intent);
+
             }
             progressDialog.hide();
         }

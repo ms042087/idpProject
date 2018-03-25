@@ -19,14 +19,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainPage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+import static java.security.AccessController.getContext;
 
+public class MainPage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    TextView UserName,License;
+    String un, ln;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
+
+
+
+
+
+
+
+        Toast.makeText(getBaseContext(),""+un,Toast.LENGTH_LONG).show();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -38,6 +50,16 @@ public class MainPage extends AppCompatActivity implements NavigationView.OnNavi
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        View header = navigationView.getHeaderView(0);
+        UserName = (TextView) header.findViewById(R.id.mpUserName);
+        License = (TextView) header.findViewById(R.id.mpLicense);
+        Intent intent = this.getIntent();
+        Bundle bundle = intent.getExtras();
+        un = bundle.getString("userName");
+        ln = bundle.getString("licenseNumber");
+        UserName.setText(un);
+        License.setText(ln);
 
     }
 
@@ -55,6 +77,7 @@ public class MainPage extends AppCompatActivity implements NavigationView.OnNavi
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main_page, menu);
+
         return true;
     }
 
@@ -85,8 +108,8 @@ public class MainPage extends AppCompatActivity implements NavigationView.OnNavi
                 break;
 
             case R.id.nav_Reservation:
-              fragment = new Reservation();
-            break;
+                fragment = new Reservation();
+                break;
 
 
 
@@ -108,20 +131,9 @@ public class MainPage extends AppCompatActivity implements NavigationView.OnNavi
 
         if( id == R.id.nav_logout){
             Toast.makeText(this,"Logout Sucessfully", Toast.LENGTH_SHORT).show();
-            NavigationView nav_logout = (NavigationView)findViewById(R.id.nav_logout);
-            nav_logout.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    //Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
-                    //startActivity(intent);
+            Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+            startActivity(intent);
 
-                    Intent intent= new Intent(MainPage.this,LoginActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                    startActivityIfNeeded(intent, 0);
-
-                    return false;
-                }
-            });
         }
 
 

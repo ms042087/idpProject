@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity{
         String z="Incorrect Password";
         boolean isSuccess=false;
 
-        String un,pw;
+        String user,pw, li;
 
 
         @Override
@@ -98,13 +98,14 @@ public class LoginActivity extends AppCompatActivity{
                         while (rs.next())
 
                         {
-                            un = rs.getString(1);
+                            user = rs.getString(1);
                             pw =rs.getString(2);
+                            li =rs.getString(3);
 
-                            if(un.equals(userName)&& pw.equals(password))
+                            if(user.equals(userName)&& pw.equals(password))
                             {
                                 isSuccess=true;
-                                z = "Login successful";
+                                z = "Welcome!! "+userName;
 
                             }
                             else {
@@ -125,8 +126,11 @@ public class LoginActivity extends AppCompatActivity{
         protected void onPostExecute(String s) {
             Toast.makeText(getBaseContext(),""+z,Toast.LENGTH_LONG).show();
             if(isSuccess) {
-                Intent intent=new Intent(LoginActivity.this,UserAreaActivity.class);
-                //intent.putExtra("name",namestr);
+                Intent intent = new Intent(LoginActivity.this,MainPage.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("userName", userName);
+                bundle.putString("licenseNumber", li);
+                intent.putExtras(bundle);
                 startActivity(intent);
 
 
