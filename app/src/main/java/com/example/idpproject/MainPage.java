@@ -112,8 +112,13 @@ public class MainPage extends AppCompatActivity implements NavigationView.OnNavi
             nav_logout.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
-                    startActivity(intent);
+                    //Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                    //startActivity(intent);
+
+                    Intent intent= new Intent(MainPage.this,LoginActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+                    startActivityIfNeeded(intent, 0);
+
                     return false;
                 }
             });

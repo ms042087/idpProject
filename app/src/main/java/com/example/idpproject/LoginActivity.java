@@ -1,7 +1,5 @@
 package com.example.idpproject;
 
-import android.app.AlertDialog;
-import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -90,7 +88,7 @@ public class LoginActivity extends AppCompatActivity{
                         z = "Please check your internet connection";
                     } else {
 
-                        String query=" select * from demoregister where userName='"+userName+"' and password='"+password+"' ";
+                        String query=" select * from user where userName='"+userName+"' and password='"+password+"' ";
 
                         Statement stmt = con.createStatement();
                         // stmt.executeUpdate(query);
@@ -130,6 +128,8 @@ public class LoginActivity extends AppCompatActivity{
                 Intent intent=new Intent(LoginActivity.this,UserAreaActivity.class);
                 //intent.putExtra("name",namestr);
                 startActivity(intent);
+
+
             }
             progressDialog.hide();
         }

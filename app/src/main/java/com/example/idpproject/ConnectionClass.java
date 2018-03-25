@@ -10,12 +10,13 @@ import java.sql.SQLException;
 
 /**
  * Created by ABHI on 9/20/2016.
+ * Modified by Ho Yu Hin on 21/3/2018
  */
+
 public class ConnectionClass {
     String classs = "com.mysql.jdbc.Driver";
-
-    String url = "jdbc:mysql://192.168.0.101/idpparkingdb";
-    String un = "idpparkingadmin";
+    String url = "jdbc:mysql://192.168.0.102/mydb";
+    String user = "idpparkingadmin";
     String password = "idpparkingadmin";
 
 
@@ -28,19 +29,15 @@ public class ConnectionClass {
         Connection conn = null;
         String ConnURL = null;
         try {
-
             Class.forName(classs);
-
-            conn = DriverManager.getConnection(url, un, password);
-
-
+            conn = DriverManager.getConnection(url, user, password);
             conn = DriverManager.getConnection(ConnURL);
         } catch (SQLException se) {
-            Log.e("ERRO", se.getMessage());
+            Log.e("ERROR", se.getMessage());
         } catch (ClassNotFoundException e) {
-            Log.e("ERRO", e.getMessage());
+            Log.e("ERROR", e.getMessage());
         } catch (Exception e) {
-            Log.e("ERRO", e.getMessage());
+            Log.e("ERROR", e.getMessage());
         }
         return conn;
     }

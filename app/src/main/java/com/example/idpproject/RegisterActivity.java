@@ -76,7 +76,7 @@ public class RegisterActivity extends AppCompatActivity {
                         z = "Please check your internet connection";
                     } else {
 
-                        String query="insert into demoregister values('"+userName+"','"+password+"','"+license+"','"+firstName+"','"+lastName+"')";
+                        String query="insert into User values('"+userName+"','"+password+"','"+license+"','"+firstName+"','"+lastName+"')";
 
                         Statement stmt = con.createStatement();
                         stmt.executeUpdate(query);
