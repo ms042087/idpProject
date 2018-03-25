@@ -18,7 +18,9 @@ public class ConnectionClass {
     /**
      * You can only change this
      */
-    String url = "jdbc:mysql://192.168.0.102/mydb";
+    //http://idpparking.ddns.net 192.168.0.102 //
+    //String url = "jdbc:mysql://192.168.0.102/mydb";
+    String url = "jdbc:mysql://idpparking.ddns.net/mydb";
     String user = "idpparkingadmin";
     String password = "idpparkingadmin";
     /**
