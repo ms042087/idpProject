@@ -108,15 +108,9 @@ public class MainPage extends AppCompatActivity implements NavigationView.OnNavi
 
         if( id == R.id.nav_logout){
             Toast.makeText(this,"Logout Sucessfully", Toast.LENGTH_SHORT).show();
-            NavigationView nav_logout = (NavigationView)findViewById(R.id.nav_logout);
-            nav_logout.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
-                    startActivity(intent);
-                    return false;
-                }
-            });
+            Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+            startActivity(intent);
+
         }
 
 

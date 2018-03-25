@@ -53,14 +53,17 @@ public class LoginActivity extends AppCompatActivity{
         bLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Dologin dologin=new Dologin();
-                dologin.execute();
+                Intent intent=new Intent(LoginActivity.this,UserAreaActivity.class);
+                //intent.putExtra("name",namestr);
+                startActivity(intent);
+                /*Dologin dologin=new Dologin();
+                dologin.execute();*/
             }
         });
     }
 
 
-    private class Dologin extends AsyncTask<String,String,String> {
+  /*  private class Dologin extends AsyncTask<String,String,String> {
 
         String userName = etUserName.getText().toString();
         String password = etPassword.getText().toString();
@@ -72,7 +75,7 @@ public class LoginActivity extends AppCompatActivity{
 
 
         @Override
-        protected void onPreExecute() {
+       protected void onPreExecute() {
             progressDialog.setMessage("Loading...");
             progressDialog.show();
             super.onPreExecute();
@@ -125,16 +128,18 @@ public class LoginActivity extends AppCompatActivity{
 
         @Override
         protected void onPostExecute(String s) {
-            Toast.makeText(getBaseContext(),""+z,Toast.LENGTH_LONG).show();
+            /*Toast.makeText(getBaseContext(),""+z,Toast.LENGTH_LONG).show();
             if(isSuccess) {
                 Intent intent=new Intent(LoginActivity.this,UserAreaActivity.class);
                 //intent.putExtra("name",namestr);
                 startActivity(intent);
             }
             progressDialog.hide();
+
+
         }
 
-    }
+    }*/
 
 
 
