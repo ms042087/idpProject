@@ -34,11 +34,6 @@ public class MainPage extends AppCompatActivity implements NavigationView.OnNavi
 
 
 
-
-
-
-
-        Toast.makeText(getBaseContext(),""+un,Toast.LENGTH_LONG).show();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -90,7 +85,7 @@ public class MainPage extends AppCompatActivity implements NavigationView.OnNavi
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_AboutUs) {
-            Intent intent = new Intent(this, MainPage.class);
+            Intent intent = new Intent(MainPage.this, MainPage.class);
             startActivity(intent);
 
             return true;
