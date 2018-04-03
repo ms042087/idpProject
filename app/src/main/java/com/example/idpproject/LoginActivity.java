@@ -124,7 +124,7 @@ public class LoginActivity extends AppCompatActivity{
 
         @Override
         protected void onPostExecute(String s) {
-            Toast.makeText(getBaseContext(),""+z,Toast.LENGTH_LONG).show();
+            //Toast.makeText(getBaseContext(),""+z,Toast.LENGTH_LONG).show();
             if(isSuccess) {
                 Intent intent = new Intent(LoginActivity.this,MainPage.class);
                 Bundle bundle = new Bundle();
