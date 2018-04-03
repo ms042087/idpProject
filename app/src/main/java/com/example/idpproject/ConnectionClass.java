@@ -18,14 +18,23 @@ public class ConnectionClass {
     /**
      * You can only change this
      */
-    //http://idpparking.ddns.net 192.168.0.102 //
+
+    // My home
     //String url = "jdbc:mysql://192.168.0.102/mydb";
+
+    // HKU
+    //String url = "jdbc:mysql://147.8.53.17/mydb";
+
+    // You should use this if I open the server
     String url = "jdbc:mysql://idpparking.ddns.net/mydb";
-    String user = "idpparkingadmin";
-    String password = "idpparkingadmin";
+
     /**
      * You can only change this
      */
+
+    String user = "idpparkingadmin";
+    String password = "idpparkingadmin";
+
 
 
     @SuppressLint("NewApi")
