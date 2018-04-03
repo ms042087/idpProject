@@ -3,6 +3,7 @@ package com.example.idpproject;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.design.internal.NavigationMenuItemView;
 import android.support.v4.app.Fragment;
@@ -19,10 +20,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainPage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    private boolean clickBackButtonOrNot = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,12 +46,26 @@ public class MainPage extends AppCompatActivity implements NavigationView.OnNavi
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
+
+        /*if (!clickBackButtonOrNot) {
+            Toast.makeText(this, "Press again to logout", Toast.LENGTH_LONG).show();
+            clickBackButtonOrNot = true;
         } else {
-            super.onBackPressed();
+                //super.onBackPressed();
         }
+        new CountDownTimer(3000,1000) {
+
+            @Override
+            public void onTick(long l) {
+
+            }
+
+            @Override
+            public void onFinish() {
+                    clickBackButtonOrNot = false;
+
+            }
+        }.start();*/
     }
 
     @Override
@@ -85,8 +102,12 @@ public class MainPage extends AppCompatActivity implements NavigationView.OnNavi
                 break;
 
             case R.id.nav_Reservation:
-              fragment = new Reservation();
-            break;
+                fragment = new CarparkSelection();
+
+                break;
+
+
+
 
 
 
@@ -94,7 +115,7 @@ public class MainPage extends AppCompatActivity implements NavigationView.OnNavi
 
         if(fragment != null){
             android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            android.support.v4.app.FragmentTransaction replace = ft.replace(R.id.cotnent_main, fragment);
+            android.support.v4.app.FragmentTransaction replace = ft.replace(R.id.cotent_main, fragment);
             ft.commit();
 
         }
