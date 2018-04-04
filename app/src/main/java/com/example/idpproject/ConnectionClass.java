@@ -36,7 +36,6 @@ public class ConnectionClass {
     String password = "idpparkingadmin";
 
 
-
     @SuppressLint("NewApi")
     public Connection CONN() {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()

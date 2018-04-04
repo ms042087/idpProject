@@ -32,8 +32,6 @@ public class MainPage extends AppCompatActivity implements NavigationView.OnNavi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
 
-
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -46,6 +44,7 @@ public class MainPage extends AppCompatActivity implements NavigationView.OnNavi
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        // Show the userName and License in the header
         View header = navigationView.getHeaderView(0);
         UserName = (TextView) header.findViewById(R.id.mpUserName);
         License = (TextView) header.findViewById(R.id.mpLicense);
@@ -96,10 +95,12 @@ public class MainPage extends AppCompatActivity implements NavigationView.OnNavi
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_AboutUs) {
-            Intent intent = new Intent(MainPage.this, MainPage.class);
+        // restart the activity
+            Intent intent = getIntent();
+            finish();
             startActivity(intent);
+            //recreate (); This doesnt work since it does not destroy the fragment
 
             return true;
         }
@@ -119,10 +120,6 @@ public class MainPage extends AppCompatActivity implements NavigationView.OnNavi
                 fragment = new CarparkSelection();
 
                 break;
-
-
-
-
 
 
         }

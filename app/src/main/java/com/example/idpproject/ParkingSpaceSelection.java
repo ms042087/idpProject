@@ -1,5 +1,6 @@
 package com.example.idpproject;
 
+import android.app.ProgressDialog;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
@@ -9,6 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+//back end
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 
 public class ParkingSpaceSelection extends Fragment {
     //TextView HLLCarpark ;
@@ -20,6 +27,9 @@ public class ParkingSpaceSelection extends Fragment {
 
     }*/
 
+    ProgressDialog progressDialog;
+    ConnectionClass connectionClass;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -30,7 +40,9 @@ public class ParkingSpaceSelection extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        getActivity().setTitle("Parking Space Selection");
 
-        getActivity().setTitle("Carpark Selection");
+
+
     }
 }

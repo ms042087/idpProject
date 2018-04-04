@@ -135,7 +135,8 @@ public class LoginActivity extends AppCompatActivity{
 
 
             }
-            progressDialog.hide();
+            //progressDialog.hide();
+            progressDialog.dismiss();
         }
 
     }
