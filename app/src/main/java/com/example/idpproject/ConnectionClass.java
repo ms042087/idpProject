@@ -20,13 +20,13 @@ public class ConnectionClass {
      */
 
     // My home
-    //String url = "jdbc:mysql://192.168.0.102/mydb";
+    String url = "jdbc:mysql://192.168.0.105/mydb";
 
     // HKU
     //String url = "jdbc:mysql://147.8.53.17/mydb";
 
     // You should use this if I open the server
-    String url = "jdbc:mysql://idpparking.ddns.net/mydb";
+    //String url = "jdbc:mysql://idpparking.ddns.net/mydb";
 
     /**
      * You can only change this

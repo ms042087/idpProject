@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity{
                         String query=" select * from user where userName='"+userName+"' and password='"+password+"' ";
 
                         Statement stmt = con.createStatement();
-                        // stmt.executeUpdate(query);
+                        //stmt.executeUpdate(query);
 
                         ResultSet rs=stmt.executeQuery(query);
 
@@ -124,7 +124,7 @@ public class LoginActivity extends AppCompatActivity{
 
         @Override
         protected void onPostExecute(String s) {
-            //Toast.makeText(getBaseContext(),""+z,Toast.LENGTH_LONG).show();
+            Toast.makeText(getBaseContext(),""+z,Toast.LENGTH_LONG).show();
             if(isSuccess) {
                 Intent intent = new Intent(LoginActivity.this,MainPage.class);
                 Bundle bundle = new Bundle();
