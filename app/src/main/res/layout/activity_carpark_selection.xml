@@ -8,85 +8,6 @@
     tools:context="com.example.idpproject.CarparkSelection">
 
     <TextView
-        android:id="@+id/carPark1Vacancy"
-        android:layout_width="82dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="412dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginRight="64dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/carPark1Distance"
-        android:layout_width="82dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="408dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/carPark1Vacancy"
-        app:layout_constraintHorizontal_bias="0.69"
-        app:layout_constraintStart_toEndOf="@+id/carPark1Name" />
-
-    <TextView
-        android:id="@+id/carPark1Name"
-        android:layout_width="82dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="408dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/carParkSelectionVacancy"
-        android:layout_width="82dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="436dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
-        android:text="Vacancy"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/carParkSelectionDistance" />
-
-    <TextView
-        android:id="@+id/carParkSelectionDistance"
-        android:layout_width="82dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="440dp"
-        android:layout_marginLeft="36dp"
-        android:layout_marginStart="36dp"
-        android:text="Distance"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/carParkSelectionName" />
-
-    <TextView
-        android:id="@+id/carParkSelectionName"
-        android:layout_width="82dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:text="Name"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/carPark1Name"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -96,5 +17,13 @@
         android:text="Click CarPark Name to Select"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="368dp"
+        android:layout_height="391dp"
+        android:layout_marginBottom="84dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
