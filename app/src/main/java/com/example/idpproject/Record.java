@@ -27,7 +27,7 @@ import java.util.Map;
  * Created by Law Kin Ping on 25/3/2018.
  */
 
-public class Records extends Fragment {
+public class Record extends Fragment {
     ProgressDialog progressDialog;
     ConnectionClass connectionClass;
     String test;
@@ -38,7 +38,7 @@ public class Records extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-       root = inflater.inflate(R.layout.activity_record,container,false);
+        root = inflater.inflate(R.layout.activity_record,container,false);
         listview = (ListView) root.findViewById(R.id.listViewRecord);
         connectionClass = new ConnectionClass();
         progressDialog=new ProgressDialog(getActivity());
@@ -91,12 +91,12 @@ public class Records extends Fragment {
                         String parkingSpaceID = rs.getString(3);
                         String carParkName="";
 
-                            String carParkQuery = "select carParkName from carpark where parkingSpaceID='"+ parkingSpaceID + "' ";
-                            Statement stmtCarParkQuery = con.createStatement();
-                            ResultSet rsCarParkQuery = stmtCarParkQuery.executeQuery(carParkQuery);
+                        String carParkQuery = "select carParkName from carpark where parkingSpaceID='"+ parkingSpaceID + "' ";
+                        Statement stmtCarParkQuery = con.createStatement();
+                        ResultSet rsCarParkQuery = stmtCarParkQuery.executeQuery(carParkQuery);
                         rsCarParkQuery.next();
                         carParkName = rsCarParkQuery.getString(1);
-                            test = carParkName;
+                        test = carParkName;
 
                         record.get(i).add(carParkName);
 

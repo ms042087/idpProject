@@ -116,7 +116,7 @@ public class MainPage extends AppCompatActivity implements NavigationView.OnNavi
                 // pass the username into Record for selection 7/4/2018
                 Bundle bundleRecord = new Bundle();
                 bundleRecord.putString("userName", un);
-                fragment = new Records();
+                fragment = new Record();
                 fragment.setArguments(bundleRecord);
                 break;
 

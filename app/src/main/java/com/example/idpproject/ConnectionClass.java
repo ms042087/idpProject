@@ -20,7 +20,7 @@ public class ConnectionClass {
      */
 
     // My home
-    String url = "jdbc:mysql://192.168.0.100/mydb";
+    String url = "jdbc:mysql://192.168.0.106/mydb";
 
     // HKU
     //String url = "jdbc:mysql://147.8.53.17/mydb";
@@ -32,8 +32,8 @@ public class ConnectionClass {
      * You can only change this
      */
 
-    String user = "idpadmin";
-    String password = "idpadmin";
+    String user = "idpparkingadmin";
+    String password = "idpparkingadmin";
 
 
     @SuppressLint("NewApi")
