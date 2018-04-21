@@ -1,12 +1,15 @@
 package com.example.idpproject;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.design.internal.NavigationMenuItemView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -23,9 +26,17 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+
 public class MainPage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     TextView UserName,License;
     String un, ln;
+    String data;
+    ConnectionClass connectionClass;
+
     private boolean clickBackButtonOrNot = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +65,7 @@ public class MainPage extends AppCompatActivity implements NavigationView.OnNavi
         ln = bundle.getString("licenseNumber");
         UserName.setText(un);
         License.setText(ln);
-
+        connectionClass = new ConnectionClass();
     }
 
     @Override
@@ -110,18 +121,90 @@ public class MainPage extends AppCompatActivity implements NavigationView.OnNavi
 
     private void displaySelectedScreen (int id){
         Fragment fragment = null;
+        Bundle bundleRecord = new Bundle();
+        String bookingStatus="";
+        String pos="";
+        if(id==R.id.nav_Reservation){
+            try {
+                Connection con = connectionClass.CONN();
 
+                if (con == null) {
+
+                } else {
+                    String query="select carParkName,pos,isActive from currentbooking where userName ='a' ;" ;
+                    Statement stmt = con.createStatement();
+                    ResultSet rs=stmt.executeQuery(query);
+
+                    while (rs.next()) {
+                        data = rs.getString(1);
+                        pos = rs.getString(2);
+                        bookingStatus = rs.getString(3);
+                }
+                if(!bookingStatus.equals("T")) {
+                    // Resetting
+                    String query1;
+                    if (pos.equals("1"))
+                        query1 = "update carpark set pos1 ='N' where carParkName= 'CarParkA' ;";
+                    else
+                        query1 = "update carpark set pos2 ='N' where carParkName= 'CarParkA' ;";
+                    Statement stmt1 = con.createStatement();
+                    stmt1.executeUpdate(query1);
+                    String query2 = "update carpark set vacancy = 2 where carParkName= 'CarParkA';";
+                    Statement stmt2 = con.createStatement();
+                    stmt2.executeUpdate(query2);
+                }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+
+            if(data!=null) {
+                if (bookingStatus.equals("T"))
+                    fragment = new CurrentBooking();
+                else{
+
+                    try {
+                        Connection con = connectionClass.CONN();
+                        if (con == null) {
+                        } else {
+
+                            // delete the record
+                            String query0="delete from currentbooking where userName = 'a' ";
+                            Statement stmt0 = con.createStatement();
+                            stmt0.executeUpdate(query0);
+                        }
+                    }
+                    catch (Exception ex){}
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setMessage("Time out. Your booking has been cancelled")
+                            .setTitle("Cancel");
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                }
+
+
+                    });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+                    }
+            else
+                fragment = new CarparkSelection();
+
+
+        }
         switch (id){
             case R.id.nav_Records:
                 // pass the username into Record for selection 7/4/2018
-                Bundle bundleRecord = new Bundle();
+                //Bundle bundleRecord = new Bundle();
                 bundleRecord.putString("userName", un);
                 fragment = new Record();
                 fragment.setArguments(bundleRecord);
                 break;
 
             case R.id.nav_Reservation:
-                fragment = new CarparkSelection();
 
                 break;
 
@@ -130,7 +213,7 @@ public class MainPage extends AppCompatActivity implements NavigationView.OnNavi
 
         if(fragment != null){
             android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            android.support.v4.app.FragmentTransaction replace = ft.replace(R.id.cotent_main, fragment);
+            android.support.v4.app.FragmentTransaction replace = ft.replace(R.id.content_main_1, fragment);
             ft.commit();
 
         }

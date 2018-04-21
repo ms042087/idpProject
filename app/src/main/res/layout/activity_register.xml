@@ -49,6 +49,7 @@
         android:layout_marginTop="6dp"
         android:ems="10"
         android:hint="Password"
+        android:inputType="textPassword"
         android:text=""
         app:layout_constraintBottom_toTopOf="@+id/etFirstName"
         app:layout_constraintEnd_toEndOf="parent"

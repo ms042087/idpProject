@@ -41,6 +41,8 @@ public class CarparkSelection extends Fragment {
 
     ListView listview;
     View root;
+
+    String checkIfBooked;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -56,9 +58,9 @@ public class CarparkSelection extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getActivity().setTitle("Carpark Selection");
-        // Extract Information from database after the view is settled
-        DoExtractCarParkInfo doExtractCarParkInfo=new DoExtractCarParkInfo();
+        DoExtractCarParkInfo doExtractCarParkInfo = new DoExtractCarParkInfo();
         doExtractCarParkInfo.execute();
+
     }
 
     private class DoExtractCarParkInfo extends AsyncTask<String,String,String> {
@@ -83,7 +85,7 @@ public class CarparkSelection extends Fragment {
                     if (con == null) {
                         z = "Please check your internet connection";
                     } else {
-                        String query="select * from carpark";
+                        String query="select carParkName,vacancy from carpark";
                         Statement stmt = con.createStatement();
                         ResultSet rs=stmt.executeQuery(query);
                         carParkInfo.add(new ArrayList<String>());
@@ -91,9 +93,9 @@ public class CarparkSelection extends Fragment {
                         // 逐行data拎，第1個 column 係id，唔需要，第2個係 Name，第3個係vacancy
                         // array[0] 係 Name (data第2個)，array[1]係 Distance，老作，array[2]係vacancy (data第3個)
                         while (rs.next()) {
+                            carParkInfo.get(i).add(rs.getString(1));
+                            carParkInfo.get(i).add("1 km");
                             carParkInfo.get(i).add(rs.getString(2));
-                            carParkInfo.get(i).add("xkm");
-                            carParkInfo.get(i).add(rs.getString(3));
                             i++;
                             carParkInfo.add(new ArrayList<String>());
                         }
@@ -147,7 +149,7 @@ public class CarparkSelection extends Fragment {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Fragment fragment = new ParkingSpaceSelection();
                     FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                    fragmentManager.beginTransaction().replace(R.id.cotent_main,fragment).commit();
+                    fragmentManager.beginTransaction().replace(R.id.content_main_1,fragment).commit();
                 }
             };
             listview.setOnItemClickListener(onClickListView);

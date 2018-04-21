@@ -9,5 +9,4 @@
     tools:context="com.example.idpproject.MainPage"
     tools:showIn="@layout/app_bar_main_page">
 
-
 </android.support.constraint.ConstraintLayout>

@@ -8,12 +8,12 @@
 
     <LinearLayout
         android:id="@+id/llBorder"
-        android:layout_width="368dp"
+        android:layout_width="360dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="16dp"
         android:orientation="horizontal"
         android:padding="5dp"
@@ -24,8 +24,8 @@
 
         <TextView
             android:id="@+id/tvCarParkName"
-            android:layout_width="155dp"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="49dp"
             android:layout_weight="2"
             android:text="TextView"
             android:textColor="@android:color/black"
@@ -33,8 +33,8 @@
 
         <TextView
             android:id="@+id/tvStart"
-            android:layout_width="102dp"
-            android:layout_height="wrap_content"
+            android:layout_width="105dp"
+            android:layout_height="49dp"
             android:layout_weight="1"
             android:text="TextView"
             android:textColor="@android:color/black"
@@ -42,17 +42,8 @@
 
         <TextView
             android:id="@+id/tvEnd"
-            android:layout_width="149dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="TextView"
-            android:textColor="@android:color/black"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/tvDuration"
-            android:layout_width="88dp"
-            android:layout_height="wrap_content"
+            android:layout_width="108dp"
+            android:layout_height="47dp"
             android:layout_weight="2"
             android:text="TextView"
             android:textColor="@android:color/black"
@@ -60,7 +51,7 @@
 
         <TextView
             android:id="@+id/tvFee"
-            android:layout_width="119dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:text="TextView"

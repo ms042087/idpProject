@@ -80,7 +80,7 @@ public class Record extends Fragment {
                     z = "Please check your internet connection";
                 } else {
 
-                    String query="select * from booking where userName='"+userName+"' ";
+                    String query="select carParkName, startDateTime, endDateTime, Fee from booking where userName='"+userName+"' ";
                     Statement stmt = con.createStatement();
                     ResultSet rs=stmt.executeQuery(query);
                     record.add(new ArrayList<String>());
@@ -88,23 +88,14 @@ public class Record extends Fragment {
 
                     while (rs.next()) {
                         // array[0] 係 carParkName，先從get左 parkingSpaceID，再係carPark table 度搵翻個名
-                        String parkingSpaceID = rs.getString(3);
-                        String carParkName="";
 
-                        String carParkQuery = "select carParkName from carpark where parkingSpaceID='"+ parkingSpaceID + "' ";
-                        Statement stmtCarParkQuery = con.createStatement();
-                        ResultSet rsCarParkQuery = stmtCarParkQuery.executeQuery(carParkQuery);
-                        rsCarParkQuery.next();
-                        carParkName = rsCarParkQuery.getString(1);
-                        test = carParkName;
-
-                        record.get(i).add(carParkName);
+                        record.get(i).add(rs.getString(1));
 
                         // array[1] 係startDateTime , array[2] 係endDateTime, array[3] 係duration, array[4] 係fee
+                        record.get(i).add(rs.getString(2));
+                        record.get(i).add(rs.getString(3));
                         record.get(i).add(rs.getString(4));
-                        record.get(i).add(rs.getString(5));
-                        record.get(i).add(rs.getString(6));
-                        record.get(i).add(rs.getString(7));
+                        //record.get(i).add(rs.getString(7));
                         i++;
                         record.add(new ArrayList<String>());
                     }
@@ -123,7 +114,7 @@ public class Record extends Fragment {
         // 呢度個Key 係 Name, Distance, Vacancy
         @Override
         protected void onPostExecute(String s) {
-            Toast.makeText(getActivity(),test, Toast.LENGTH_SHORT).show();
+
 
             List<Map<String, Object>> items = new ArrayList<Map<String, Object>>();
             Map<String, Object> title = new HashMap<String, Object>();
@@ -132,7 +123,7 @@ public class Record extends Fragment {
             title.put("Name", "CarPark");
             title.put("Start", "Start");
             title.put("End", "End");
-            title.put("Duration", "Duration");
+            //title.put("Duration", "Duration");
             title.put("Fee", "Fee");
             items.add(title);
 
@@ -142,8 +133,8 @@ public class Record extends Fragment {
                 item.put("Name", record.get(i).get(0));
                 item.put("Start", record.get(i).get(1));
                 item.put("End", record.get(i).get(2));
-                item.put("Duration", record.get(i).get(3));
-                item.put("Fee", record.get(i).get(4));
+                //item.put("Duration", record.get(i).get(3));
+                item.put("Fee", record.get(i).get(3));
                 items.add(item);
             }
 
@@ -152,8 +143,8 @@ public class Record extends Fragment {
                     getActivity(),
                     items,
                     R.layout.style_listviewrecord,
-                    new String[]{"Name", "Start", "End", "Duration", "Fee"},
-                    new int[]{R.id.tvCarParkName, R.id.tvStart, R.id.tvEnd, R.id.tvDuration, R.id.tvFee}
+                    new String[]{"Name", "Start", "End", "Fee"},
+                    new int[]{R.id.tvCarParkName, R.id.tvStart, R.id.tvEnd, R.id.tvFee}
             ) {
             };
 
